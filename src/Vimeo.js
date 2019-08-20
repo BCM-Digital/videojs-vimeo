@@ -1,8 +1,8 @@
 import videojs from 'video.js';
 import VimeoPlayer from '@vimeo/player';
 
-const Component = videojs.getComponent('Component');
-const Tech = videojs.getComponent('Tech');
+const Component = videojs.default.getComponent('Component');
+const Tech = videojs.default.getComponent('Tech');
 let cssInjected = false;
 
 // Since the iframe can't be touched using Vimeo's way of embedding,
@@ -131,7 +131,7 @@ class Vimeo extends Tech {
   }
 
   createEl() {
-    const div = videojs.createEl('div', {
+    const div = videojs.default.createEl('div', {
       id: this.options_.techId
     });
 
@@ -184,7 +184,7 @@ class Vimeo extends Tech {
   buffered() {
     const progress = this._vimeoState.progress;
 
-    return videojs.createTimeRange(0, progress.percent * progress.duration);
+    return videojs.default.createTimeRange(0, progress.percent * progress.duration);
   }
 
   paused() {
